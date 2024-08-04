@@ -1,0 +1,19 @@
+{
+    "name": "Endless Tile Player",
+    "author": "Florian Wesch <fw@info-beamer.com>",
+    "desc": "Displays images, videos or childs on a tile grid",
+    "platforms": ["pi/epoch-2"],
+    "lifecycle": "beta",
+    "version": "beta-1",
+    "offline": {
+        "support": "yes",
+        "info": "No external time or data needed"
+    },
+    "embeddable_packages": [
+        "https://cdn.infobeamer.com/bulk/package-cef-browser/package.links"
+    ],
+    "nesting": {
+        "parents": ["top-level"],
+        "childs": ["hdv2-player-plugin"]
+    }
+}

@@ -1,0 +1,90 @@
+{
+    "name": "Content Player",
+    "options": [{
+        "title": "Tile configuration",
+        "type": "section"
+    }, {
+            "title": "Screen size",
+            "type": "select",
+            "name": "size",
+            "options": [
+                [[2,2], "2x2"],
+                [[4,2], "4x2"],
+                [[2,4], "2x4"],
+                [[3,3], "3x3"]
+            ],
+            "ui_width": 3,
+            "default": "2x2"
+    }, {
+        "title": "Tiles",
+        "name": "tiles",
+        "type": "list",
+        "itemname": "Tile",
+        "adders": [{
+            "label": "tile",
+            "help": "Add an new tile",
+            "item": {},
+            "select": ["asset", {
+                "asset_id": "tile_asset"
+            }]
+        }],
+        "items": [{
+            "type": "section",
+            "name": "tile_section",
+            "ui_type": "small",
+            "title": "Tile"
+        }, {
+            "title": "Asset",
+            "ui_width": 6,
+            "name": "tile_asset",
+            "type": "resource",
+            "valid": ["image", "video", "child"],
+            "features": ["image4k", "hevc"],
+            "default": "empty.png"
+        }, {
+            "title": "Size",
+            "type": "select",
+            "name": "size",
+            "options": [
+                [[1,1], "1x1"],
+                [[1,2], "1x2"],
+                [[1,3], "1x3"],
+                [[2,1], "2x1"],
+                [[2,2], "2x2"],
+                [[3,1], "3x1"]
+            ],
+            "ui_width": 3,
+            "default": "1x1"
+        }, {
+            "title": "Reload",
+            "condition": ["config", "tile_asset", "is_child"],
+            "type": "select",
+            "name": "reload",
+            "options": [
+                [60, "Every minute"],
+                [120, "Every 2 minutes"],
+                [300, "Every 5 minutes"]
+            ],
+            "ui_width": 3,
+            "default": 300
+        }, {
+            "title": "Reload",
+            "condition": ["!", ["config", "tile_asset", "is_child"]],
+            "type": "select",
+            "name": "x_reload",
+            "options": [
+                ["", "Automatic"]
+            ],
+            "ui_width": 3,
+            "default": ""
+        }, {
+            "title": "",
+            "condition": ["config", "tile_asset", "is_child"],
+            "name": "child_config",
+            "type": "custom",
+            "child_ref": "tile_asset",
+            "page": "zz-plugin.html",
+            "default": {}
+        }]
+    }]
+}
